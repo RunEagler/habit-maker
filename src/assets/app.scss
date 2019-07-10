@@ -1,0 +1,19 @@
+@for $i from 100 through 1000 {
+  .width-#{$i + 10} {
+    width: $i + 10px;
+  }
+}
+
+@for $i from 100 through 1000 {
+  .height-#{$i + 10} {
+    height: $i + 10px;
+  }
+}
+
+.border {
+  border: solid 1px red;
+}
+
+.bg-black {
+  background-color: black;
+}
