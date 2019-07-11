@@ -34,6 +34,12 @@ class IssueModule extends VuexModule {
     this.issues.push(issue);
   }
 
+  @Mutation
+  deleteIssue(issueID: number) {
+    const deleteIssueID = this.issues.findIndex((issue: Issue) => issue.id === issueID);
+    this.issues.splice(deleteIssueID, 1);
+  }
+
   @Action
   async fetchIssues() {
     const mock = await require('@/assets/mock-json/issues.json');

@@ -17,3 +17,9 @@ export enum IssueStatus {
   InProgress,
   Done,
 }
+
+export enum TaskStatus {
+  NotCompleted,
+  InProgress,
+  Completed,
+}

@@ -4,5 +4,5 @@
   </div>
 </template>
 <style lang="scss">
-@import "./assets/app.scss";
+@import './assets/app.scss';
 </style>

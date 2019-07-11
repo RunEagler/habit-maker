@@ -31,7 +31,7 @@
             <q-item-label caption>{{ issue.content }}</q-item-label>
           </q-item-section>
           <q-item-section side>
-            <q-icon name="info" color="green" />
+            <q-icon name="delete" color="bg-grey-8" @click="deleteIssue(issue.id)" />
           </q-item-section>
         </q-item>
       </q-list>
@@ -90,6 +90,10 @@ export default class IssuePage extends Vue {
     issue.emergency = issue.emergencySelect.value;
     const newIssue: Issue = new Issue().deserialize(issue);
     issueModule.addIssue(newIssue);
+  }
+
+  deleteIssue(issueID: number): void {
+    issueModule.deleteIssue(issueID);
   }
 }
 </script>

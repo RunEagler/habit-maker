@@ -15,37 +15,12 @@
     <q-drawer v-model="leftDrawerOpen" bordered content-class="bg-indigo-1">
       <q-list>
         <q-item-label header>Navigation</q-item-label>
-        <q-item to="/" exact>
+        <q-item :to="menu.path" exact v-for="menu in sideMenus">
           <q-item-section avatar>
-            <q-icon name="home" />
+            <q-icon :name="menu.icon" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Home</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item to="/goal" exact>
-          <q-item-section avatar>
-            <q-icon name="info" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Goal</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item to="/issue" exact>
-          <q-item-section avatar>
-            <q-icon name="info" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Issue</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item to="/icons" exact>
-          <q-item-section avatar>
-            <q-icon name="info" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Icons</q-item-label>
+            <q-item-label>{{ menu.label }}</q-item-label>
           </q-item-section>
         </q-item>
 
@@ -104,14 +79,41 @@
   </q-layout>
 </template>
 
-<script>
-export default {
-  name: 'LayoutDefault',
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-  data() {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop,
-    };
-  },
-};
+@Component({
+  name: 'GoalView',
+  components: {},
+})
+export default class Goal extends Vue {
+  leftDrawerOpen: boolean = this.$q.platform.is.desktop;
+  sideMenus: any = [
+    {
+      path: '/',
+      label: 'Home',
+      icon: 'home',
+    },
+    {
+      path: '/task',
+      label: 'Task',
+      icon: 'view_list',
+    },
+    {
+      path: '/goal',
+      label: 'Goal',
+      icon: 'stars',
+    },
+    {
+      path: '/issue',
+      label: 'Issue',
+      icon: 'error_outline',
+    },
+    {
+      path: '/icons',
+      label: 'Icons',
+      icon: 'mood',
+    },
+  ];
+}
 </script>

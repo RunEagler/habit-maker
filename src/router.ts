@@ -5,6 +5,7 @@ import Home from './views/Home/home.vue';
 import Icons from '@/views/Icons.vue';
 import Goal from '@/views/Goal/goal.vue';
 import Issue from '@/views/Issue/issue.vue';
+import Task from '@/views/Task/task.vue';
 
 Vue.use(Router);
 
@@ -15,7 +16,7 @@ export default new Router({
       component: DefaultLayout,
       children: [
         {
-          path: '',
+          path: '/',
           name: 'home',
           component: Home,
         },
@@ -28,6 +29,11 @@ export default new Router({
           path: '/goal',
           name: 'goal',
           component: Goal,
+        },
+        {
+          path: '/task',
+          name: 'task',
+          component: Task,
         },
         {
           path: '/issue',
