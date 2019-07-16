@@ -1,17 +1,23 @@
 import { Priority } from '@/models/enum';
+import { Serializable } from '@/models/serializable';
 
-export class Goal {
+export class Goal implements Serializable<Goal> {
   public id: number;
+  public parentID: number;
   public content: string;
   public priority: Priority;
   public createdAt?: Date;
   public deadline: string;
+  public issueID: number;
 
-  constructor() {
-    this.id = -1;
-    this.content = '';
-    this.priority = Priority.C;
-    this.deadline = '';
-    this.createdAt = new Date();
+  deserialize(input: any) {
+    this.id = input.id;
+    this.parentID = input.parentID;
+    this.content = input.content;
+    this.priority = input.priority;
+    this.deadline = input.deadline;
+    this.issueID = input.issueID;
+
+    return this;
   }
 }

@@ -1,59 +1,70 @@
 <template>
   <div class="row q-pa-sm">
-    <q-toolbar class="bg-teal-8 text-white shadow-2">
-      <q-toolbar-title>Contacts</q-toolbar-title>
-    </q-toolbar>
-
-    <q-list bordered>
-      <q-item v-for="contact in contacts" :key="contact.id" class="q-my-sm" clickable v-ripple>
-        <q-item-section avatar>
-          <q-avatar color="primary" text-color="white">
-            {{ contact.letter }}
-          </q-avatar>
-        </q-item-section>
-
-        <q-item-section>
-          <q-item-label>{{ contact.name }}</q-item-label>
-          <q-item-label caption lines="1">{{ contact.email }}</q-item-label>
-        </q-item-section>
-
-        <q-item-section side>
-          <q-icon name="chat_bubble" color="green" />
-        </q-item-section>
-      </q-item>
-
-      <q-separator />
-      <q-item-label header>Offline</q-item-label>
-
-      <q-item v-for="contact in offline" :key="contact.id" class="q-mb-sm" clickable v-ripple>
-        <q-item-section avatar>
-          <q-avatar>
-            <img :src="`https://cdn.quasar.dev/img/${contact.avatar}`" />
-          </q-avatar>
-        </q-item-section>
-
-        <q-item-section>
-          <q-item-label>{{ contact.name }}</q-item-label>
-          <q-item-label caption lines="1">{{ contact.email }}</q-item-label>
-        </q-item-section>
-
-        <q-item-section side>
-          <q-icon name="chat_bubble" color="grey" />
-        </q-item-section>
-      </q-item>
-    </q-list>
+    {{ goalsTree }}
+    <q-splitter v-model="splitterModel" style="height: 400px">
+      <template v-slot:before>
+        <div class="q-pa-md">
+          <q-tree :nodes="goalsTree" node-key="label" selected-color="primary" :selected.sync="selected" default-expand-all @update="select" />
+        </div>
+      </template>
+      <template v-slot:after>
+        <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
+          <q-tab-panel :name="goal.content" v-for="goal in goals">
+            <div class="text-h4 q-mb-md">{{ goal.content }}</div>
+            <p></p>
+          </q-tab-panel>
+        </q-tab-panels>
+      </template>
+    </q-splitter>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { goalModule } from '@/store/modules/goal';
+import { Goal } from '@/models/goal';
+import { Tree } from '@/models/quaser';
 
 @Component({
   name: 'GoalView',
   components: {},
 })
 export default class GoalView extends Vue {
-  mounted() {}
+  splitterModel: number = 50;
+  selected: string = 'Food';
+  simple: any[] = [
+    {
+      label: 'Relax Hotel',
+      children: [
+        {
+          label: 'Food',
+          icon: 'restaurant_menu',
+        },
+        {
+          label: 'Room service',
+          icon: 'room_service',
+        },
+        {
+          label: 'Room view',
+          icon: 'photo',
+        },
+      ],
+    },
+  ];
+
+  mounted() {
+    goalModule.fetchGoals();
+  }
+
+  select(item: any) {}
+
+  get goals(): Goal[] {
+    return goalModule.goals;
+  }
+
+  get goalsTree(): Tree[] {
+    return goalModule.goalsTree;
+  }
 }
 </script>
 

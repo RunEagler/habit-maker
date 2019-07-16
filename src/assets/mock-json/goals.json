@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "parentID": -1,
+    "content": "優れたエンジニアのキャリアを形成する",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  },
+  {
+    "id": 2,
+    "parentID": 1,
+    "content": "1週間で1アウトプット",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": ""
+  },
+  {
+    "id": 3,
+    "parentID": 1,
+    "content": "毎日1コミット",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": ""
+  },
+  {
+    "id": 4,
+    "parentID": -1,
+    "content": "フロントエンドエンジニアを名乗るだけの技術力を身につける",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  },
+  {
+    "id": 5,
+    "parentID": 4,
+    "content": "javascriptをマスターする",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  },
+  {
+    "id": 6,
+    "parentID": -1,
+    "content": "生涯の体力作り",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  },
+  {
+    "id": 7,
+    "parentID": 6,
+    "content": "筋トレを毎日欠かさずする",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  },
+  {
+    "id": 8,
+    "parentID": 6,
+    "content": "ランニングを週3以上",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  },
+  {
+    "id": 9,
+    "parentID": 5,
+    "content": "vue.jsをマスターする",
+    "priority": 1,
+    "createdAt": "",
+    "deadline": "2019-09-30"
+  }
+]

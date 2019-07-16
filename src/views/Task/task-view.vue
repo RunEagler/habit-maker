@@ -5,16 +5,16 @@
       <q-item clickable v-ripple v-for="task in taskByGoalID.tasks" active-class="bg-black text-green-1">
         <q-item-section avatar top> </q-item-section>
         <q-item-section>
-          <q-item-label caption>{{ task.content }}</q-item-label>
+          <q-item-label caption>{{ task.todo }}</q-item-label>
         </q-item-section>
         <q-item-section side>
           <q-chip>
             <q-avatar icon="timer" color="indigo-8" text-color="white"></q-avatar>
-            {{ task.minute }}&nbsp;minute
+            {{ task.estimateTime }}&nbsp;minute
           </q-chip>
         </q-item-section>
         <q-item-section side>
-          <q-icon name="delete" color="bg-grey-8" @click="deleteIssue(task.id)" />
+          <q-icon name="delete" color="bg-grey-8" @click="deleteTask(task.id)" />
         </q-item-section>
       </q-item>
     </q-list>
@@ -41,6 +41,10 @@ export default class TaskView extends Vue {
 
   get tasksByGoalID(): TaskByGoalID[] {
     return taskModule.tasksByGoalID;
+  }
+
+  deleteTask(taskID: number) {
+    taskModule.deleteTask(taskID);
   }
 }
 </script>

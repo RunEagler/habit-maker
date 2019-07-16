@@ -6,6 +6,8 @@ import Icons from '@/views/Icons.vue';
 import Goal from '@/views/Goal/goal.vue';
 import Issue from '@/views/Issue/issue.vue';
 import Task from '@/views/Task/task.vue';
+import Progress from '@/views/Progress/progress.vue';
+import Plan from '@/views/Plan/plan.vue';
 
 Vue.use(Router);
 
@@ -34,6 +36,16 @@ export default new Router({
           path: '/task',
           name: 'task',
           component: Task,
+        },
+        {
+          path: '/plan',
+          name: 'plan',
+          component: Plan,
+        },
+        {
+          path: '/progress',
+          name: 'progress',
+          component: Progress,
         },
         {
           path: '/issue',

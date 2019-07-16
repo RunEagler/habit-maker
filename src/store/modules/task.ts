@@ -41,7 +41,7 @@ class TaskModule extends VuexModule {
   }
 
   @Mutation
-  addTask(task: Task) {
+  entryTask(task: Task) {
     this.tasks.push(task);
   }
 
@@ -72,7 +72,7 @@ class TaskModule extends VuexModule {
   @Mutation
   sortTime(isReverse: boolean) {
     this.tasks.sort((a: Task, b: Task) => {
-      const condition = isReverse ? a.minute > b.minute : a.minute < b.minute;
+      const condition = isReverse ? a.estimateTime > b.estimateTime : a.estimateTime < b.estimateTime;
       if (condition) {
         return 1;
       } else {
@@ -89,10 +89,8 @@ class TaskModule extends VuexModule {
 
   @Mutation
   deleteTask(taskID: number) {
-    let deleteIndex = -1;
-    this.tasks.some((task, i) => {
+    const deleteIndex = this.tasks.findIndex((task, i) => {
       if (task.id === taskID) {
-        deleteIndex = i;
         return true;
       }
       return false;

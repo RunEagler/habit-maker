@@ -95,9 +95,9 @@ export default class Goal extends Vue {
       icon: 'home',
     },
     {
-      path: '/task',
-      label: 'Task',
-      icon: 'view_list',
+      path: '/issue',
+      label: 'Issue',
+      icon: 'error_outline',
     },
     {
       path: '/goal',
@@ -105,9 +105,19 @@ export default class Goal extends Vue {
       icon: 'stars',
     },
     {
-      path: '/issue',
-      label: 'Issue',
-      icon: 'error_outline',
+      path: '/task',
+      label: 'Task',
+      icon: 'view_list',
+    },
+    {
+      path: '/plan',
+      label: 'Plan',
+      icon: 'schedule',
+    },
+    {
+      path: '/progress',
+      label: 'Progress',
+      icon: 'timeline',
     },
     {
       path: '/icons',
