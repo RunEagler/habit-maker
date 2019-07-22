@@ -2,6 +2,7 @@
   {
     "id": 1,
     "entryDate": "2018-11-01",
+    "executionDate": "2019-07-25",
     "goalID": 1,
     "subject": "coding",
     "priority": 1,
@@ -9,11 +10,12 @@
     "estimateTime": 120,
     "tags": [],
     "isAlways": false,
-    "state": 1
+    "status": 1
   },
   {
     "id": 2,
     "entryDate": "2018-11-05",
+    "executionDate": "2019-07-26",
     "goalID": 1,
     "subject": "reading",
     "priority": 2,
@@ -21,11 +23,12 @@
     "estimateTime": 60,
     "tags": [],
     "isAlways": false,
-    "state": 2
+    "status": 2
   },
   {
     "id": 3,
     "entryDate": "2018-11-06",
+    "executionDate": "2019-07-28",
     "goalID": 1,
     "subject": "output",
     "priority": 2,
@@ -33,11 +36,12 @@
     "estimateTime": 90,
     "tags": [],
     "isAlways": false,
-    "state": 1
+    "status": 1
   },
   {
     "id": 4,
     "entryDate": "2018-11-03",
+    "executionDate": "2019-07-22",
     "goalID": 1,
     "subject": "idea",
     "priority": 2,
@@ -45,11 +49,12 @@
     "estimateTime": 90,
     "tags": [],
     "isAlways": false,
-    "state": 0
+    "status": 0
   },
   {
     "id": 5,
     "entryDate": "2018-10-25",
+    "executionDate": "2019-07-28",
     "goalID": 1,
     "subject": "auditing",
     "priority": 1,
@@ -57,11 +62,12 @@
     "estimateTime": 15,
     "tags": [],
     "isAlways": true,
-    "state": 1
+    "status": 1
   },
   {
     "id": 6,
     "entryDate": "2018-10-20",
+    "executionDate": "2019-08-11",
     "goalID": 1,
     "subject": "paper",
     "priority": 3,
@@ -69,11 +75,12 @@
     "estimateTime": 90,
     "tags": [],
     "isAlways": false,
-    "state": 2
+    "status": 2
   },
   {
     "id": 7,
     "entryDate": "2018-10-01",
+    "executionDate": "2019-07-03",
     "goalID": 2,
     "subject": "training",
     "priority": 2,
@@ -81,11 +88,12 @@
     "estimateTime": 30,
     "tags": [],
     "isAlways": false,
-    "state": 1
+    "status": 3
   },
   {
     "id": 8,
     "entryDate": "2018-10-11",
+    "executionDate": "2019-07-24",
     "goalID": 2,
     "subject": "running",
     "priority": 2,
@@ -93,11 +101,12 @@
     "estimateTime": 60,
     "tags": [],
     "isAlways": true,
-    "state": 0
+    "status": 0
   },
   {
     "id": 9,
     "entryDate": "2018-10-22",
+    "executionDate": "2019-07-18",
     "goalID": 3,
     "subject": "piano",
     "priority": 2,
@@ -105,6 +114,6 @@
     "estimateTime": 60,
     "tags": [],
     "isAlways": false,
-    "state": 2
+    "status": 2
   }
 ]

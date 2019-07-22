@@ -19,7 +19,13 @@ export enum IssueStatus {
 }
 
 export enum TaskStatus {
-  NotCompleted,
+  NotCompleted = 1,
   InProgress,
   Completed,
+}
+
+export enum DateType {
+  PostDate = 1,
+  CurrentDate,
+  FutureDate,
 }

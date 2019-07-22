@@ -1,4 +1,4 @@
-import { DateUtil } from '@/utils/date';
+import { DateUtil } from '@/utils/dateNum';
 import { TaskStatus } from '@/models/enum';
 import { Serializable } from '@/models/serializable';
 
@@ -6,6 +6,7 @@ export class Task implements Serializable<Task> {
   public id: number;
   public entryDate: string;
   public startDate?: DateUtil;
+  public executionDate: DateUtil;
   public endDate?: DateUtil;
   public goalID: number;
   public subject: string;
@@ -20,6 +21,7 @@ export class Task implements Serializable<Task> {
   deserialize(input: any): Task {
     this.id = input.id;
     this.entryDate = input.entryDate;
+    this.executionDate = new DateUtil(new Date(input.executionDate));
     this.goalID = input.goalID;
     this.subject = input.subject;
     this.priority = input.priority;
@@ -32,6 +34,10 @@ export class Task implements Serializable<Task> {
     // this.endDate = new DateUtil(new Date());
     this.status = input.status;
     return this;
+  }
+
+  get isDone(): boolean {
+    return this.status === TaskStatus.Completed;
   }
 }
 

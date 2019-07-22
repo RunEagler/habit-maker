@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import Vuex, { ActionTree, GetterTree, MutationTree } from 'vuex';
+import { DateUtil } from '@/utils/dateNum';
 
 Vue.use(Vuex);
+
+const dateUtil = new DateUtil(new Date());
 
 export interface RootState {
   collapsed: boolean;
@@ -11,6 +14,7 @@ export interface RootState {
     query: { [key: string]: string };
     fullPath: string;
   };
+  now: any;
 }
 
 const stateOfModule: RootState = {
@@ -21,6 +25,7 @@ const stateOfModule: RootState = {
     query: {},
     fullPath: '',
   },
+  now: dateUtil,
 };
 
 const gettersOfModule: GetterTree<RootState, RootState> = {};
