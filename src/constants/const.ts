@@ -10,6 +10,6 @@ export const FRIDAY: number = 5;
 export const SATURDAY: number = 6;
 
 export const HOUR_OF_DAY = 24;
-export const estimateTime_OF_HOUR = 60;
-export const SECOND_OF_estimateTime = 60;
+export const ESTIMATE_TIME_OF_HOUR = 60;
+export const SECOND_OF_ESTIMATE_TIME = 60;
 export const MILLISECOND_OF_SECOND = 1000;

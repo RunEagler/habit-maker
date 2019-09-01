@@ -1,4 +1,3 @@
-import { DateType } from "../../../models/enum"; import { DateType } from "../../../models/enum"; import { DateType } from "../../../models/enum";
 <template>
   <q-card :class="selectColor" text-darken-1>
     <q-card-section class="title">
@@ -14,25 +13,42 @@ import { DateType } from "../../../models/enum"; import { DateType } from "../..
     <q-card-actions align="around">
       <q-btn v-if="isPostDate > 0" dense color="green-6" icon="done" class="q-ml-md" size="10px">
         <q-badge color="red" floating>{{ doneTasks.length }}</q-badge>
-        <q-tooltip content-class="bg-light-blue-7" anchor="bottom middle" self="top middle" content-style="font-size: 16px" :offset="[10, 10]">
-          <div v-for="task in doneTasks"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
+        <q-tooltip
+          content-class="bg-light-blue-7"
+          anchor="bottom middle"
+          self="top middle"
+          content-style="font-size: 16px"
+          :offset="[10, 10]"
+        >
+          <div v-for="(task, i) in doneTasks" :key="i"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
         </q-tooltip>
       </q-btn>
       <q-btn v-else icon="done" dense color="grey-6" class="q-ml-md" size="10px"> </q-btn>
 
-      <q-btn v-if="assignedTasks.length > 0" dense color="green-6" icon="list" class="q-ml-md" size="10px">
+      <q-btn
+        v-if="assignedTasks.length > 0"
+        dense
+        color="green-6"
+        icon="list"
+        class="q-ml-md"
+        size="10px"
+        @click="adjustTask"
+      >
         <q-badge color="red" floating>{{ assignedTasks.length }}</q-badge>
-        <q-tooltip content-class="bg-light-blue-7" anchor="bottom middle" self="top middle" content-style="font-size: 16px" :offset="[10, 10]">
-          <div v-for="task in assignedTasks"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
+        <q-tooltip
+          content-class="bg-light-blue-7"
+          anchor="bottom middle"
+          self="top middle"
+          content-style="font-size: 16px"
+          :offset="[10, 10]"
+        >
+          <div v-for="(task, i) in assignedTasks" :key="i"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
         </q-tooltip>
+        <q-popup-edit v-model="label">
+          <q-select v-model="label" :options="todos" label="タスク一覧"></q-select>
+        </q-popup-edit>
       </q-btn>
       <q-btn v-else icon="list" dense color="grey-6" class="q-ml-md" size="10px"> </q-btn>
-
-      <!--<div class="row">-->
-      <!--<div class="col" v-for="(icon, i) in this.selectedIcons" :key="i">-->
-      <!--<q-icon medium color="grey lighten-2" :name="icon.name"> </q-icon>-->
-      <!--</div>-->
-      <!--</div>-->
     </q-card-actions>
     <q-card-actions> </q-card-actions>
   </q-card>
@@ -61,6 +77,7 @@ export default class MonthCalenderDate extends Vue {
     { name: 'description', label: 'paper' },
     { name: 'music_note', label: 'music' },
   ];
+  label: string = 'click';
 
   @Prop() dateUtil: DateUtil;
 
@@ -84,12 +101,19 @@ export default class MonthCalenderDate extends Vue {
     });
   }
 
+  get todos(): string[] {
+    return taskModule.todos;
+  }
+
   get doneTasks(): Task[] {
     return this.assignedTasks.filter((task: Task) => task.isDone);
   }
 
   get dateType(): DateType {
-    if (this.dateUtil.month < this.now.month || (this.dateUtil.month === this.now.month && this.dateUtil.dateNum < this.now.dateNum)) {
+    if (
+      this.dateUtil.month < this.now.month ||
+      (this.dateUtil.month === this.now.month && this.dateUtil.dateNum < this.now.dateNum)
+    ) {
       return DateType.PostDate;
     } else if (this.dateUtil.month === this.now.month && this.dateUtil.dateNum === this.now.dateNum) {
       return DateType.CurrentDate;

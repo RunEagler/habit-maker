@@ -1,15 +1,21 @@
 <template>
   <div class="row q-pa-sm">
-    {{ goalsTree }}
     <q-splitter v-model="splitterModel" style="height: 400px">
       <template v-slot:before>
         <div class="q-pa-md">
-          <q-tree :nodes="goalsTree" node-key="label" selected-color="primary" :selected.sync="selected" default-expand-all @update="select" />
+          <q-tree
+            :nodes="goalsTree"
+            node-key="label"
+            selected-color="primary"
+            :selected.sync="selected"
+            default-expand-all
+            @update="select"
+          />
         </div>
       </template>
       <template v-slot:after>
         <q-tab-panels v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
-          <q-tab-panel :name="goal.content" v-for="goal in goals">
+          <q-tab-panel :name="goal.content" v-for="(goal, i) in goals" :key="i">
             <div class="text-h4 q-mb-md">{{ goal.content }}</div>
             <p></p>
           </q-tab-panel>
@@ -23,7 +29,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { goalModule } from '@/store/modules/goal';
 import { Goal } from '@/models/goal';
-import { Tree } from '@/models/quaser';
+import { Tree } from '@/models/quasar/tree';
 
 @Component({
   name: 'GoalView',

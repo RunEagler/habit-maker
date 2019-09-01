@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-1" v-for="i in 12">
+    <div class="col-1" v-for="i in 12" :key="i">
       <q-btn :class="[btnColor(i), 'text-white', 'full-width']" @click="selectMonth(i)"> {{ i }}月 </q-btn>
     </div>
   </div>

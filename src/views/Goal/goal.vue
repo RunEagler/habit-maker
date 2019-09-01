@@ -23,6 +23,7 @@ export default class Goal extends Vue {
   priority: string = '';
   options: string[] = ['A', 'B', 'C'];
 }
+
 </script>
 
 <style scoped lang="scss">

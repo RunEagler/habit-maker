@@ -7,6 +7,10 @@ import { mockJSON } from '@/main';
 class IssueModule extends VuexModule {
   issues: Issue[] = [];
 
+  get issueContents(): string[] {
+    return this.issues.map((issue: Issue) => issue.content);
+  }
+
   get issuesByField(): IssueByField[] {
     return this.issues.reduce((result: IssueByField[], issue: Issue, _: number): IssueByField[] => {
       const index = result.findIndex((value: IssueByField) => {

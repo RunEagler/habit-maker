@@ -3,25 +3,24 @@ import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-dec
 import { store } from '@/store/index';
 import { Task, TaskByGoalID } from '@/models/task';
 import { mockJSON } from '@/main';
-import { Issue, IssueByField } from '@/models/issue';
 
 @Module({ dynamic: true, store, name: 'task', namespaced: true })
 class TaskModule extends VuexModule {
   tasks: Task[] = [];
 
-  get tasksByStatus(): Task[][] {
-    return [
-      this.tasks.filter((task: Task) => {
-        task.status === TaskStatus.NotCompleted;
-      }),
-      this.tasks.filter((task: Task) => {
-        task.status === TaskStatus.InProgress;
-      }),
-      this.tasks.filter((task: Task) => {
-        task.status === TaskStatus.Completed;
-      }),
-    ];
-  }
+  // get tasksByStatus(): Task[][] {
+  //   return [
+  //     this.tasks.filter((task: Task) => {
+  //       task.status === TaskStatus.NotCompleted;
+  //     }),
+  //     this.tasks.filter((task: Task) => {
+  //       task.status === TaskStatus.InProgress;
+  //     }),
+  //     this.tasks.filter((task: Task) => {
+  //       task.status === TaskStatus.Completed;
+  //     }),
+  //   ];
+  // }
 
   get tasksByGoalID(): TaskByGoalID[] {
     return this.tasks.reduce((result: TaskByGoalID[], task: Task, _: number): TaskByGoalID[] => {
@@ -38,6 +37,10 @@ class TaskModule extends VuexModule {
       }
       return result;
     }, []);
+  }
+
+  get todos(): string[] {
+    return this.tasks.map((task: Task) => task.todo);
   }
 
   @Mutation

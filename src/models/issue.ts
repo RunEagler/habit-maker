@@ -1,6 +1,6 @@
 import { Icon, IconIssueStatusDone, IconIssueStatusInProgress, IconIssueStatusUnSolve } from '@/models/const';
 import { Serializable } from '@/models/serializable';
-import { Select } from '@/models/quaser';
+import { Select } from '@/models/quasar/select';
 import { Emergency, IssueStatus } from '@/models/enum';
 
 export class Issue implements Serializable<Issue> {

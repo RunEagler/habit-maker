@@ -2,7 +2,7 @@ import { Mutation, VuexModule, Action, Module, getModule } from 'vuex-module-dec
 import { store } from '@/store/index';
 import { Goal } from '@/models/goal';
 import { mockJSON } from '@/main';
-import { Tree } from '@/models/quaser';
+import { Tree } from '@/models/quasar/tree';
 
 @Module({ dynamic: true, store, name: 'goalModule', namespaced: true })
 class GoalModule extends VuexModule {

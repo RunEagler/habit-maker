@@ -1,6 +1,7 @@
 <template>
   <q-page>
-    <div class="q-pa-md">
+    <breadcrumbs :breadcrumbs="breadcrumbs"></breadcrumbs>
+    <div>
       <task-entry></task-entry>
     </div>
     <div class="q-pa-md">
@@ -13,13 +14,23 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import TaskEntry from '@/views/Task/task-entry.vue';
 import TaskView from '@/views/Task/task-view.vue';
+import { Breadcrumb } from '@/models/quasar/breadcrumb';
+import Breadcrumbs from '@/components/breadcrumbs.vue';
 
 @Component({
   name: 'Task',
-  components: { TaskView, TaskEntry },
+  components: { Breadcrumbs, TaskView, TaskEntry },
 })
 export default class Task extends Vue {
-  mounted() {}
+  breadcrumbs: Breadcrumb[] = [];
+  mounted() {
+    this.breadcrumbs = [
+      {
+        icon: 'view_list',
+        label: 'task',
+      },
+    ];
+  }
 }
 </script>
 

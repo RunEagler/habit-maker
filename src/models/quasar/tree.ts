@@ -1,13 +1,3 @@
-export class Select {
-  label: string;
-  value: number;
-
-  constructor(label: string, value: number) {
-    this.label = label;
-    this.value = value;
-  }
-}
-
 export class Tree {
   id: number;
   label: string;

@@ -14,6 +14,8 @@
     "member-access": [false, "check-accessor"],
     "no-empty": false,
     "no-namespace": true,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "max-line-length": false,
+    "no-unused-expression": false
   }
 }
