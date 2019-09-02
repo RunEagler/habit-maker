@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{tasksByGoalID}}
     <draggable v-for="tasks,i in tasksByGoalID" :options="{ group: 'tasks' }" style="min-height: 10px" :key="i">
       <template>
         <q-list :key="i" bordered separator>
@@ -34,8 +35,4 @@ export default class TaskDraggable extends Vue {
 </script>
 
 <style scoped lang="scss">
-.cell > div {
-  background: lightyellow;
-  border: dashed 2px;
-}
 </style>

@@ -4,7 +4,7 @@
       <template v-slot:separator>
         <q-icon size="1.5em" name="chevron_right" color="primary" />
       </template>
-      <q-breadcrumbs-el :label="b.label" :icon="b.icon" v-for="(i, b) in breadcrumbs" :key="i"></q-breadcrumbs-el>
+      <q-breadcrumbs-el :label="b.label" :icon="b.icon" v-for="(b, i) in breadcrumbs" :key="i"></q-breadcrumbs-el>
     </q-breadcrumbs>
   </div>
 </template>

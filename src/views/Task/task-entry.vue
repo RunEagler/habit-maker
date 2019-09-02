@@ -2,10 +2,17 @@
   <q-card class="height-230">
     <div class="row q-pa-sm">
       <div class="col-4">
-        <q-select outlined label="目的" v-model="newTask.goalID" :options="goals"></q-select>
+        <q-select
+          outlined
+          label="目的"
+          v-model="newTask.goalID"
+          :options="goalOptions"
+          map-options
+          emit-value
+        ></q-select>
       </div>
       <div class="col-4">
-        <q-select outlined label="分類" v-model="newTask.subject"></q-select>
+        <q-select outlined label="分類" v-model="newTask.subject" :options="[1, 2, 3, 4]"></q-select>
       </div>
       <div class="col-4">
         <q-select outlined label="見積もり時間" v-model="newTask.estimateTime" :options="times"> </q-select>
@@ -32,7 +39,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Task } from '@/models/task';
 import { taskModule } from '@/store/modules/task';
 import { goalModule } from '@/store/modules/goal';
-import { Goal } from '@/models/goal';
+import { Select } from '@/models/quasar/select';
 
 @Component({
   name: 'task-entry',
@@ -46,18 +53,18 @@ export default class TaskEntry extends Vue {
     goalModule.fetchGoals();
   }
 
-  goals(): Goal[] {
-    return goalModule.goals;
+  get goalOptions(): Select<number>[] {
+    return goalModule.goalOptions;
   }
 
   entryTask() {
+    console.log(this.newTask.goalID);
     const newTask: Task = this.newTask.deserialize({
       goalID: this.newTask.goalID,
       subject: this.newTask.subject,
       estimateTime: this.newTask.estimateTime,
       todo: this.newTask.todo,
     });
-
     taskModule.entryTask(newTask);
   }
 }

@@ -19,7 +19,7 @@
               <calender-date :dateUtil="targetDate(weekIndex, offset)"></calender-date>
             </div>
           </div>
-          <task-draggable></task-draggable>
+          <!--<task-draggable></task-draggable>-->
         </q-tab-panel>
         <q-tab-panel name="week">
           <week></week>

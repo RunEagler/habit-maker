@@ -58,15 +58,6 @@ export default class ProgressWeek extends Vue {
         ],
         type: 'bar',
         groups: [['data1', 'data2']],
-        // onclick: function(d: any, i: number) {
-        //   console.log('onclick', d, i);
-        // },
-        // onmouseover: function(d, i) {
-        //   console.log('onmouseover', d, i);
-        // },
-        // onmouseout: function(d, i) {
-        //   console.log('onmouseout', d, i);
-        // },
       },
       axis: {
         x: {

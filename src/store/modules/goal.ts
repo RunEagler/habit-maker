@@ -3,10 +3,17 @@ import { store } from '@/store/index';
 import { Goal } from '@/models/goal';
 import { mockJSON } from '@/main';
 import { Tree } from '@/models/quasar/tree';
+import { Select } from '@/models/quasar/select';
 
 @Module({ dynamic: true, store, name: 'goalModule', namespaced: true })
 class GoalModule extends VuexModule {
   goals: Goal[] = [];
+
+  get goalOptions(): Select<number>[] {
+    return this.goals.map((goal: Goal) => {
+      return { label: goal.content, value: goal.id };
+    });
+  }
 
   get goalsTree(): Tree[] {
     const result: Tree[] = [];

@@ -1,8 +1,8 @@
-export class Select {
+export class Select<T> {
   label: string;
-  value: number;
+  value: T;
 
-  constructor(label: string, value: number) {
+  constructor(label: string, value: T) {
     this.label = label;
     this.value = value;
   }
