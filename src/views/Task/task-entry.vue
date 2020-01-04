@@ -59,7 +59,7 @@ export default class TaskEntry extends Vue {
 
   entryTask() {
     console.log(this.newTask.goalID);
-    const newTask: Task = this.newTask.deserialize({
+    const newTask: Task = new Task().deserialize({
       goalID: this.newTask.goalID,
       subject: this.newTask.subject,
       estimateTime: this.newTask.estimateTime,

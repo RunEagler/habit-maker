@@ -1,0 +1,9 @@
+query issues {
+  issues {
+    description
+    issue_category {
+      category
+    }
+    progress_status
+  }
+}

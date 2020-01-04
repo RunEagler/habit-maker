@@ -23,9 +23,18 @@
     <div class="q-pa-md">
       <q-list bordered padding v-for="issueByField in issuesByField">
         <q-item-label header>{{ issueByField.field }}</q-item-label>
-        <q-item clickable v-ripple v-for="issue in issueByField.issues" active-class="bg-black text-green-1" :class="issue.statusListColor">
+        <q-item
+          clickable
+          v-ripple
+          v-for="issue in issueByField.issues"
+          active-class="bg-black text-green-1"
+        >
           <q-item-section avatar top>
-            <q-avatar :icon="issue.statusIcon.icon" :color="issue.statusIcon.color" :text-color="issue.statusIcon.textColor" />
+            <q-avatar
+              :icon="issue.statusIcon.icon"
+              :color="issue.statusIcon.color"
+              :text-color="issue.statusIcon.textColor"
+            />
           </q-item-section>
           <q-item-section>
             <q-item-label caption>{{ issue.content }}</q-item-label>
@@ -44,10 +53,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import { issueModule } from '@/store/modules/issue';
 import { Issue, IssueByField } from '@/models/issue';
 import { Emergency } from '@/models/enum';
+import IssuesQuery from '@/graphql/issues.gql';
 
 @Component({
   name: 'Issue',
   components: {},
+  apollo: {
+    issues: IssuesQuery,
+  },
 })
 export default class IssuePage extends Vue {
   newIssue: Issue = new Issue();
@@ -76,6 +89,7 @@ export default class IssuePage extends Vue {
 
   mounted() {
     issueModule.fetchIssues();
+    this.$apollo.queries.issues();
   }
 
   get issues(): Issue[] {

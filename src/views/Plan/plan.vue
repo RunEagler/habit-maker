@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-tabs v-model="tab" class="bg-green-5 text-white shadow-2">
+    <q-tabs v-model="tab" class="bg-blue-grey-8">
       <q-tab name="month" label="month" />
       <q-tab name="week" label="week" />
       <q-tab name="date" label="date" />

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-1" v-for="i in 12" :key="i">
-      <q-btn :class="[btnColor(i), 'text-white', 'full-width']" @click="selectMonth(i)"> {{ i }}月 </q-btn>
+      <q-btn :class="[btnColor(i), 'full-width']" @click="selectMonth(i)"> {{ i }}月 </q-btn>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default class MonthHeader extends Vue {
   }
 
   btnColor(i: number): string {
-    return i === this.currentMonth ? 'bg-yellow-10' : 'bg-blue-7';
+    return i === this.currentMonth ? 'bg-secondary' : 'bg-grey-7';
   }
 
   selectMonth(selectedMonth: number): void {

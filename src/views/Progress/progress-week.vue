@@ -47,6 +47,7 @@ import 'c3/c3.min.css';
 export default class ProgressWeek extends Vue {
   handler: any = new Vue();
   mounted() {
+    console.log(this.$store.state);
     const options = {
       // c3.chartのデータ例
       data: {

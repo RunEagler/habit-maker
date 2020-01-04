@@ -1,57 +1,62 @@
 <template>
-  <q-card :class="selectColor" text-darken-1>
-    <q-card-section class="title">
-      <div class="row">
-        <div class="col-2" :class="{ 'text-blue': dateUtil.isSaturDay, 'text-red': dateUtil.isSunday }">
-          {{ dateUtil.dateNum }}
-        </div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
-      </div>
-    </q-card-section>
-    <q-separator inset />
-    <q-card-actions align="around">
-      <q-btn v-if="isPostDate > 0" dense color="green-6" icon="done" class="q-ml-md" size="10px">
-        <q-badge color="red" floating>{{ doneTasks.length }}</q-badge>
-        <q-tooltip
-          content-class="bg-light-blue-7"
-          anchor="bottom middle"
-          self="top middle"
-          content-style="font-size: 16px"
-          :offset="[10, 10]"
-        >
-          <div v-for="(task, i) in doneTasks" :key="i"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
-        </q-tooltip>
-      </q-btn>
-      <q-btn v-else icon="done" dense color="grey-6" class="q-ml-md" size="10px"> </q-btn>
+  <div :class="selectColor" style="border:1px solid #90a4ae">
+    <div
+      class="column q-pa-sm"
+      :class="{ 'text-blue': dateUtil.isSaturDay, 'text-red': dateUtil.isSunday }"
+      style="height:150px;"
+    >
+      <div class="row col">
+        <div class="col-2">{{ dateUtil.dateNum }}</div>
 
-      <q-btn
-        v-if="assignedTasks.length > 0"
-        dense
-        color="green-6"
-        icon="list"
-        class="q-ml-md"
-        size="10px"
-        @click="adjustTask"
-      >
-        <q-badge color="red" floating>{{ assignedTasks.length }}</q-badge>
-        <q-tooltip
-          content-class="bg-light-blue-7"
-          anchor="bottom middle"
-          self="top middle"
-          content-style="font-size: 16px"
-          :offset="[10, 10]"
+        <q-space />
+
+        <div class="col-3">
+          <q-badge color="positive" class="text-bold">12h</q-badge>
+        </div>
+      </div>
+      <div class="row col-8"></div>
+
+      <div class="col">
+        <q-btn v-if="isPostDate > 0" dense color="primary" icon="done" class="q-ml-md" size="10px">
+          <q-badge color="red" floating>{{ doneTasks.length }}</q-badge>
+          <q-tooltip
+            content-class="bg-light-blue-7"
+            anchor="bottom middle"
+            self="top middle"
+            content-style="font-size: 16px"
+            :offset="[10, 10]"
+          >
+            <div v-for="(task, i) in doneTasks" :key="i"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
+          </q-tooltip>
+        </q-btn>
+        <q-btn v-else icon="done" dense color="grey-6" class="q-ml-md" size="10px"> </q-btn>
+        <q-btn
+          v-if="assignedTasks.length > 0"
+          dense
+          color="green-6"
+          icon="list"
+          class="q-ml-md"
+          size="10px"
+          @click="adjustTask"
         >
-          <div v-for="(task, i) in assignedTasks" :key="i"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
-        </q-tooltip>
-        <q-popup-edit v-model="label">
-          <q-select v-model="label" :options="todos" label="タスク一覧"></q-select>
-        </q-popup-edit>
-      </q-btn>
-      <q-btn v-else icon="list" dense color="grey-6" class="q-ml-md" size="10px"> </q-btn>
-    </q-card-actions>
-    <q-card-actions> </q-card-actions>
-  </q-card>
+          <q-badge color="red" floating>{{ assignedTasks.length }}</q-badge>
+          <q-tooltip
+            content-class="bg-light-blue-7"
+            anchor="bottom middle"
+            self="top middle"
+            content-style="font-size: 16px"
+            :offset="[10, 10]"
+          >
+            <div v-for="(task, i) in assignedTasks" :key="i"><q-icon name="assignment"></q-icon>{{ task.todo }}</div>
+          </q-tooltip>
+          <q-popup-edit v-model="label">
+            <q-select v-model="label" :options="todos" label="タスク一覧"></q-select>
+          </q-popup-edit>
+        </q-btn>
+        <q-btn v-else icon="list" dense color="grey-6" class="q-ml-md" size="10px"> </q-btn>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -137,11 +142,11 @@ export default class MonthCalenderDate extends Vue {
   public get selectColor(): string {
     switch (this.dateType) {
       case DateType.CurrentDate:
-        return 'bg-yellow-1';
+        return 'bg-amber-3';
       case DateType.PostDate:
-        return 'bg-grey-5';
+        return 'bg-blue-grey-5';
       case DateType.FutureDate:
-        return 'bg-white';
+        return 'bg-blue-grey-9';
     }
   }
 }

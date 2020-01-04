@@ -4,6 +4,16 @@
       <div class="q-gutter-md" style="font-size: 2em">
         <q-icon :name="icon" v-for="icon in icons" />
       </div>
+
+      <div class="q-gutter-sm">
+        <q-btn color="primary" label="primary" size="20px" />
+        <q-btn color="secondary" label="secondary" size="20px" />
+        <q-btn color="positive" label="positive" size="20px" />
+        <q-btn color="warning" label="warning" size="20px" />
+        <q-btn color="negative" label="negative" size="20px" />
+        <q-btn color="accent" label="accent" size="20px" />
+        <q-btn color="info" label="info" size="20px" />
+      </div>
     </div>
   </q-page>
 </template>

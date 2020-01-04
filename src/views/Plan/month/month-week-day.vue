@@ -1,11 +1,9 @@
 <template>
   <div class="row">
     <div class="col" v-for="i in weekNum" :key="i">
-      <q-card>
-        <q-card-section class="text-center text-white bg-indigo-7">
-          {{ days[i - 1] }}
-        </q-card-section>
-      </q-card>
+      <div class="text-center text-weight-bold q-pa-sm bg-blue-grey-9">
+        {{ days[i - 1] }}
+      </div>
     </div>
   </div>
 </template>

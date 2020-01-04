@@ -1,15 +1,24 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-indigo-10">
+    <q-header elevated class="bg-blue-grey-10">
       <q-toolbar>
         <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" icon="menu" />
         <q-toolbar-title>
           HABIT_MAKER
         </q-toolbar-title>
+        <q-toggle v-model="mode" label="モード" />
         <!--<div>Quasar v{{ $q.version }}</div>-->
       </q-toolbar>
     </q-header>
-    <q-drawer v-model="leftDrawerOpen" bordered content-class="bg-indigo-1">
+    <q-drawer
+      v-model="leftDrawerOpen"
+      bordered
+      content-class="bg-blue-grey-10"
+      class="text-white"
+      :mini="sideMini"
+      @mouseover="sideMini = false"
+      @mouseout="sideMini = true"
+    >
       <q-list>
         <q-item-label header>Navigation</q-item-label>
         <q-item :to="menu.path" exact v-for="menu in sideMenus">
@@ -29,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component({
   name: 'GoalView',
@@ -37,6 +46,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 })
 export default class Goal extends Vue {
   leftDrawerOpen: boolean = this.$q.platform.is.desktop;
+  mode: boolean = true;
+  sideMini: boolean = false;
   sideMenus: any = [
     {
       path: '/',
@@ -74,5 +85,14 @@ export default class Goal extends Vue {
       icon: 'mood',
     },
   ];
+
+  @Watch('mode')
+  watchMode(value: boolean) {
+    this.$q.dark.set(value);
+  }
+
+  created() {
+    this.$q.dark.set(this.mode);
+  }
 }
 </script>
